@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "../components/CustomCursor";
+
+// Font setup
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+});
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -18,9 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-white text-gray-900 antialiased`}>
-        {children}
+    <html lang="en" className="scroll-smooth">
+      <body className={`${playfair.variable} ${inter.variable} bg-neutral-50 text-neutral-900 antialiased`}>
+        <CustomCursor />
+        <div className="selection:bg-neutral-900 selection:text-white">
+          {children}
+        </div>
       </body>
     </html>
   );

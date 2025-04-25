@@ -39,7 +39,7 @@ const Contact = () => {
         >
           <a 
             href="mailto:kprijun@gmail.com"
-            className="block text-xl hover:text-blue-600 transition-colors"
+            className="block text-xl hover:text-accent transition-colors"
           >
             kprijun@gmail.com
           </a>
@@ -62,7 +62,7 @@ const Contact = () => {
             >
               <Link
                 href={link.href}
-                className={`text-lg font-medium text-gray-600 hover:text-${link.color}-600 transition-colors`}
+                className={`text-lg font-medium text-gray-600 hover:text-accent transition-colors`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

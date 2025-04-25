@@ -86,7 +86,7 @@ const FeaturedProjectItem = ({ project, index }: { project: FeaturedProject; ind
         
         {/* Decorative border */}
         <motion.div 
-          className="absolute inset-0 border border-neutral-300"
+          className="absolute inset-0 border border-accent/30"
           style={{ 
             top: '15px', 
             left: project.alignment === 'left' ? '15px' : '-15px',
@@ -123,7 +123,7 @@ const FeaturedProjectItem = ({ project, index }: { project: FeaturedProject; ind
             whileHover={{ x: 5 }}
             whileTap={{ scale: 0.98 }}
           >
-            <span className="mr-2 font-inter text-neutral-900 border-b border-neutral-300 group-hover:border-neutral-900 transition-colors">
+            <span className="mr-2 font-inter text-neutral-900 border-b border-neutral-300 group-hover:border-accent transition-colors">
               View Project
             </span>
             <svg 

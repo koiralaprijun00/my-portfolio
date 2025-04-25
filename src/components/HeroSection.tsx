@@ -64,6 +64,21 @@ const HeroSection = () => {
                 <p>Stockholm, Sweden</p>
               </div>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="max-w-2xl"
+            >
+              <h2 className="text-2xl font-bold mb-6">About Me</h2>
+              <p className="text-lg text-neutral-600 leading-relaxed">
+                I&apos;m a Creative Designer based in Stockholm, Sweden, specializing in UI/UX design, 
+                branding, and interactive experiences. With a background in visual design and a 
+                passion for user-centered solutions, I create digital experiences that are both 
+                beautiful and functional.
+              </p>
+            </motion.div>
           </motion.div>
         </div>
       </motion.header>

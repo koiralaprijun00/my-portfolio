@@ -1,92 +1,83 @@
 'use client';
 
-import { useRef } from 'react';
-import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
-import WorkExperience from '@/components/WorkExperience';
+import { motion } from 'framer-motion';
+
+interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+}
+
+const experiences: Experience[] = [
+  {
+    title: "Creative Designer",
+    company: "StoryCycle, Nepal",
+    period: "Jan 2017 - Jul 2021",
+    description: "As the only designer, I took the lead from strategy to the final output collaborating with the team. Involved in strategy, research and wireframing the User Interface and experience and come up with a unique selling point for websites."
+  },
+  {
+    title: "Data Visualization, Infographics",
+    company: "Province 01, Government of Nepal",
+    period: "2020",
+    description: "Worked with State 1 Federal government to create infographics and visual presentation of Provincial Profile. The visuals are designed in Nepali Language and illustrates the current scenario in numbers."
+  },
+  {
+    title: "Cities for the Youth, 2021",
+    company: "US Embassy Nepal",
+    period: "2021",
+    description: "Municipality level based web platform designed through telling stories in collaboration with the government. Designed and prototyped in figma including UX writing for the entire website."
+  }
+];
 
 const About = () => {
-  const aboutRef = useRef(null);
-  const isInView = useInView(aboutRef, { once: true, amount: 0.2 });
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <motion.div
-        ref={aboutRef}
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.6 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="max-w-3xl mx-auto"
       >
-        {/* Image Column */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+        <h2 className="text-3xl font-bold mb-8">About Me</h2>
+        <motion.p 
+          className="text-lg text-gray-600 mb-12 leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative h-[600px] overflow-hidden"
         >
-          <Image
-            src="/placeholder.jpg"
-            alt="Prijun Koirala"
-            fill
-            className="object-cover object-center"
-          />
-          <motion.div 
-            className="absolute inset-0 border border-neutral-300 -m-3"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          />
-        </motion.div>
+          I&apos;m a Creative Designer based in Stockholm, Sweden, specializing in UI/UX design, 
+          branding, and interactive experiences. With a background in visual design and a 
+          passion for user-centered solutions, I create digital experiences that are both 
+          beautiful and functional.
+        </motion.p>
 
-        {/* Content Column */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <motion.h2 
-            className="text-4xl font-playfair mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            About Me
-          </motion.h2>
-          
-          <motion.div
-            className="space-y-6 text-neutral-700 font-inter"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <p>
-              I&apos;m a creative designer with a passion for crafting immersive digital experiences 
-              that bridge the gap between functionality and aesthetics. With over 5 years of experience
-              in UI/UX design, branding, and interactive media, I specialize in creating 
-              user-centered solutions that both engage and inspire.
-            </p>
-            
-            <p>
-              My approach combines thoughtful research, strategic thinking, and creative exploration 
-              to develop designs that not only solve problems but also create memorable experiences. 
-              I believe in the power of storytelling through design and strive to create work that 
-              resonates on both emotional and functional levels.
-            </p>
-            <p>
-              When I&apos;m not designing, you can find me exploring the streets of Stockholm with my camera, 
-              experimenting with new cooking recipes, or diving into the latest design trends and technologies.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-12"
-          >
-            <WorkExperience />
-          </motion.div>
+          <h3 className="text-2xl font-bold mb-6">Experience</h3>
+          <div className="space-y-12">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 * (index + 1) }}
+                className="border-l-2 border-gray-200 pl-6 relative"
+              >
+                <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-[7px] top-2" />
+                <h4 className="text-xl font-semibold">{exp.title}</h4>
+                <p className="text-gray-600 mt-1">{exp.company} • {exp.period}</p>
+                <p className="text-gray-700 mt-3 leading-relaxed">{exp.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
     </div>
